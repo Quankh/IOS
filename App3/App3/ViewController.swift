@@ -11,14 +11,37 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var btn_click: UIButton!
     @IBOutlet weak var img_View1: UIImageView!
+    @IBOutlet weak var `switch`: UISwitch!
+    
+    var isON:Bool = false
+    var isSwitch : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        btn_click.setTitle("Img1", for: .normal)
+        `switch`.isOn = false
     }
 
+    @IBAction func swich1(_ sender: Any) {
+        isSwitch.toggle()
+    }
+    
     @IBAction func btn_click(_ sender: Any) {
-        btn_click.setTitle("OK", for: .normal)
-        img_View1.image = UIImage(named :"img1")
+        isON.toggle()
+        
+        if(isON && isSwitch)
+        {
+            btn_click.setTitle("Img2", for: .normal)
+            img_View1.image = UIImage(named :"img2")
+            img_View1.contentMode=UIView.ContentMode.scaleAspectFill
+        }
+        else if(isSwitch)
+        {
+            btn_click.setTitle("Img1", for: .normal)
+            img_View1.image = UIImage(named :"img1")
+            img_View1.contentMode=UIView.ContentMode.scaleAspectFill
+        }
+        
     }
 }
 
